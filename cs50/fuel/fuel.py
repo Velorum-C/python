@@ -1,19 +1,46 @@
-while True:
-    result = input("Fraction: ").split("/")
-    try:
-        x = int(result[0])
-        y = int(result[1])
-    except ValueError:
-        print("Please type valid integers")
-    else:
-        if x > y or y == 0:
-            continue
-        break
+def main():
 
-if x <= 0.01 * y:
-    output = "E"
-elif x >= 0.99 * y:
-    output = "F"
-else:
-    output = str(round(100 * x / y)) + "%"
-print(output)
+    while True:
+        input_fraction = input("Fraction: ")
+        try:
+            percentage = convert(input_fraction)
+            break
+
+        except Exception as e:
+            continue
+
+    print(gauge(percentage))
+
+
+def convert(fraction):
+    value = fraction.split("/")
+
+    try:
+        x = int(value[0])
+        y = int(value[1])
+
+    except ValueError as e:
+        raise e
+
+    if x > y:
+        raise ValueError("Fraction must be less than one")
+
+    if y == 0:
+        raise ZeroDivisionError("Cannot divide by zero")
+
+    return round(100 * x / y)
+
+
+def gauge(percentage):
+
+    if percentage <= 1:
+        return "E"
+
+    if percentage >= 99:
+        return "F"
+
+    return str(percentage) + "%"
+
+
+if __name__ == "__main__":
+    main()

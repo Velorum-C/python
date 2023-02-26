@@ -1,11 +1,24 @@
-result = input("Greeting: ")
+import string
 
-if result[0].lower() != "h":
-    print("$100")
-    exit()
 
-if result.split()[0].lower() != "hello":
-    print("$20")
-    exit()
+def main():
 
-print("$0")
+    greeting = input("Greeting: ")
+    print(value(greeting))
+
+
+def value(greeting):
+
+    greeting = greeting.translate(str.maketrans("", "", string.punctuation))
+
+    if greeting.split()[0].lower() == "hello":
+        return "$0"
+
+    if greeting[0].lower() == "h":
+        return "$20"
+
+    return "$100"
+
+
+if __name__ == "__main__":
+    main()
