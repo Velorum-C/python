@@ -3,8 +3,11 @@ import sys
 
 if len(sys.argv) != 2:
     sys.exit("How many bitcoins?")
+
+api_string = "https://api.coindesk.com/v1/bpi/currentprice.json"
+
 try:
-    response = requests.get("https://api.coindesk.com/v1/bpi/currentprice.json")
+    response = requests.get(api_string)
 except requests.RequestException:
     sys.exit("bad request")
 
