@@ -1,12 +1,11 @@
 def main():
-
     while True:
         input_fraction = input("Fraction: ")
         try:
             percentage = convert(input_fraction)
             break
 
-        except Exception as e:
+        except Exception:
             continue
 
     print(gauge(percentage))
@@ -32,7 +31,6 @@ def convert(fraction):
 
 
 def gauge(percentage):
-
     if percentage <= 1:
         return "E"
 

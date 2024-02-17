@@ -1,5 +1,6 @@
-import requests
 import sys
+
+import requests
 
 if len(sys.argv) != 2:
     sys.exit("How many bitcoins?")
